@@ -1,0 +1,46 @@
+
+<html>
+  
+  <head>
+    <title>Text to Speech</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  </head>
+
+  <body>
+    <div class="container">
+      
+      <h3>Text to Speech Converter</h3>
+      
+      <textarea rows="" class="form-control" id="text" cols="" placeholder="Paste some text here..."></textarea>
+      <br>
+
+      <button type="button" class="btn btn-primary btn-lg" id="speak">Speak</button>
+
+    </div>
+
+    <script>
+      
+      var text = document.querySelector('#text');
+      var speak = document.querySelector('#speak');
+      
+      function speaknow () {
+        var speech = new SpeechSynthesisUtterance();
+        speech.rate = .7;
+        speech.pitch = -2;
+        speech.volume = 1;
+        speech.voice =speechSynthesis.getVoices()[0];
+        speech.text = text.value;
+
+        speechSynthesis.speak(speech);
+      }
+
+      speak.onclick = function (e) {
+        e.preventDefault();
+        speaknow();
+      };
+    </script>
+    
+  </body>
+
+</html>
